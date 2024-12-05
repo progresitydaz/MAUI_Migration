@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     x:Class="WebViewApp.Xamarin.Core.Views.HeaderView"
+     xmlns:local="clr-namespace:WebViewApp.Xamarin.Core.Extensions;assembly=WebViewApp.Xamarin.Core"
+             BackgroundColor="{StaticResource AppTitleBarColor}">
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" x:Name="MenuButton" WidthRequest="30" HeightRequest="35"
+            Source="hamburger_menu.png" VerticalOptions="CenterAndExpand"
+             HorizontalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnDrawerButtonTapped" />
+            </Image.GestureRecognizers>
+            <Image.Margin>
+                <OnPlatform x:TypeArguments="Thickness" iOS="10, 0, 0, 0"
+                     Android="10, 0, 0, 0" />
+            </Image.Margin>
+        </Image>
+        <Label Grid.Row="0" x:Name="AppTitleLabel"
+             Style="{StaticResource PageHeaderStyle}"
+             VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+    </Grid>
+
+</ContentView>

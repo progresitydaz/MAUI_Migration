@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="WebViewApp.Xamarin.Core.Views.TabBarView"
+        xmlns:local="clr-namespace:WebViewApp.Xamarin.Core.Extensions;assembly=WebViewApp.Xamarin.Core"
+        BackgroundColor="Transparent" HorizontalOptions="FillAndExpand">
+    <ScrollView HorizontalScrollBarVisibility="Never"
+            VerticalScrollBarVisibility="Never" x:Name="ScrollView"
+            HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+            Orientation="Horizontal">
+        <StackLayout x:Name="ButtonPanel" Margin="0,0,0,0"
+                HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                Orientation="Horizontal" />
+    </ScrollView>
+</ContentView>

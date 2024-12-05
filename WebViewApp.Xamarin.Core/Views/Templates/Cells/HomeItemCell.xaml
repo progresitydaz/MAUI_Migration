@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="WebViewApp.Xamarin.Core.Views.HomeItemCell"
+        xmlns:views="clr-namespace:WebViewApp.Xamarin.Core.Views;assembly=WebViewApp.Xamarin.Core"
+        xmlns:local="clr-namespace:WebViewApp.Xamarin.Core.Extensions;assembly=WebViewApp.Xamarin.Core"
+        xmlns:controls="clr-namespace:WebViewApp.Xamarin.Core.Controls;assembly=WebViewApp.Xamarin.Core">
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Frame Grid.Row="0" BackgroundColor="#efefef" Padding="30,10"
+                CornerRadius="10" VerticalOptions="Center"
+                HorizontalOptions="Center" Margin="10,10" HasShadow="False">
+            <StackLayout   VerticalOptions="Center" HorizontalOptions="Center"
+                    Margin="5,5" Orientation="Vertical">
+                <Label  HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start"
+                        Style="{StaticResource HeaderLabelStyle}"
+                        Text="{Binding Header}" MaxLines="2"
+                        LineBreakMode="NoWrap" />
+                <AbsoluteLayout VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                    <Image Source="{Binding ImageUrl}" Aspect="AspectFit"
+                            Margin="2,2">
+                    </Image>
+                    <views:RoundedLabelTemplate Style="{StaticResource HomeItemCountFrameStyle}"
+                            TextStyle="{StaticResource HomeCountLabelStyle}"
+                            HorizontalOptions="EndAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Text="{Binding SubHeader}"
+                            AbsoluteLayout.LayoutBounds="0.9,0.5,-1,-1"
+                            AbsoluteLayout.LayoutFlags="PositionProportional">
+                    </views:RoundedLabelTemplate>
+                </AbsoluteLayout>
+                <controls:ExtendedButton  Style="{StaticResource RoundedButtonStyle}"
+                        CornerRadius="2" VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Text="{local:Translate ViewMore}"
+                        Clicked="ExtendedButton_Clicked" FontSize="10"
+                        Padding="10,2">
+                </controls:ExtendedButton>
+            </StackLayout>
+        </Frame>
+
+    </Grid>
+</ContentView>

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="WebViewApp.Xamarin.Core.Views.MenuView"
+        xmlns:views="clr-namespace:WebViewApp.Xamarin.Core.Views;assembly=WebViewApp.Xamarin.Core"
+        xmlns:viewModelBase="clr-namespace:WebViewApp.Xamarin.Core.ViewModels.Base;assembly=WebViewApp.Xamarin.Core"
+        xmlns:local="clr-namespace:WebViewApp.Xamarin.Core.Extensions;assembly=WebViewApp.Xamarin.Core"
+        xmlns:baseView="clr-namespace:WebViewApp.Xamarin.Core.Views.Base;assembly=WebViewApp.Xamarin.Core"
+        xmlns:controls="clr-namespace:WebViewApp.Xamarin.Core.Controls;assembly=WebViewApp.Xamarin.Core"
+        xmlns:templates="clr-namespace:WebViewApp.Xamarin.Core.Views;assembly=WebViewApp.Xamarin.Core"
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+        xmlns:behaviors="clr-namespace:WebViewApp.Xamarin.Core.Behaviors;assembly=WebViewApp.Xamarin.Core"
+        xmlns:effects="clr-namespace:WebViewApp.Xamarin.Core.Effects;assembly=WebViewApp.Xamarin.Core"
+        viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+        ios:Page.UseSafeArea="true" NavigationPage.HasNavigationBar="false"
+        BackgroundColor="{StaticResource MenuBackgroundColor}" Title="Menu">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" Padding="0" Margin="0">
+            <StackLayout HorizontalOptions="CenterAndExpand"
+                    Orientation="Vertical" Margin="5,20,5,5">
+                <Image HorizontalOptions="Center" Source="splash.png"
+                        Margin="5,2" HeightRequest="71"
+                        BackgroundColor="Transparent">
+                </Image>
+            </StackLayout>
+            <ListView x:Name="ListViewMenu" ItemsSource="{Binding MenuItems}"
+                    BackgroundColor="{StaticResource MenuBackgroundColor}"
+                    SeparatorColor="{StaticResource MenuSeparatorColor}"
+                    SeparatorVisibility="None" SelectionMode="None"
+                    HasUnevenRows="True" Margin="0,5,0,5"
+                    AutomationId="Menu_ListView"
+                    VerticalOptions="CenterAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <templates:ExtendedViewCell SelectedBackgroundColor="Transparent">
+                            <StackLayout Orientation="Vertical"
+                                    VerticalOptions="Center"
+                                    BackgroundColor="Transparent">
+                                <Grid BackgroundColor="Transparent"
+                                        VerticalOptions="Center">
+                                    <Grid.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness"
+                                                iOS="15, 0, 15, 0"
+                                                Android="15, 0, 15, 0" />
+                                    </Grid.Margin>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding IconSource}"
+                                            VerticalOptions="CenterAndExpand"
+                                            Grid.Column="0">
+                                        <Image.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness"
+                                                    iOS="5, 0, 5, 0"
+                                                    Android="5, 0, 5, 0" />
+                                        </Image.Margin>
+                                    </Image>
+                                    <StackLayout Grid.Column="1"
+                                            Orientation="Horizontal"
+                                            Margin="5,10">
+                                        <Label
+                                                Style="{StaticResource MenuTextStyle}"
+                                                Text="{Binding Title}"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Start">
+                                        </Label>
+                                        <views:RoundedLabelTemplate Style="{StaticResource NotificationCountFrameStyle}"
+                                                TextStyle="{StaticResource NotificationCountLabelStyle}"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center"
+                                                Text="{Binding FormattedValue}"
+                                                IsVisible="{Binding IsFormattedTextVisible}">
+
+                                        </views:RoundedLabelTemplate>
+                                    </StackLayout>
+                                </Grid>
+                                <BoxView HeightRequest="1"
+                                        Style="{Binding Style}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="End" />
+                            </StackLayout>
+                        </templates:ExtendedViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="ItemTapped"
+                            Command="{Binding MenuItemTappedCommand}">
+                    </behaviors:EventToCommandBehavior>
+                </ListView.Behaviors>
+            </ListView>
+            <StackLayout HorizontalOptions="CenterAndExpand"
+                    Orientation="Vertical" Margin="5,5,5,5">
+                <StackLayout HorizontalOptions="CenterAndExpand"
+                        Orientation="Horizontal">
+                    <ImageButton HorizontalOptions="Center" Source="fb.png"
+                            BackgroundColor="Transparent" Margin="5"
+                            WidthRequest="25" HeightRequest="25"
+                            Command="{Binding SocialButtonTappedCommand}"
+                            CommandParameter="1" />
+                    <ImageButton HorizontalOptions="Center" Source="linkedin.png"
+                            BackgroundColor="Transparent" Margin="5"
+                            WidthRequest="25" HeightRequest="25"
+                            Command="{Binding SocialButtonTappedCommand}"
+                            CommandParameter="2" />
+                    <ImageButton HorizontalOptions="Center" Source="twitter.png"
+                            BackgroundColor="Transparent" Margin="5"
+                            WidthRequest="25" HeightRequest="25"
+                            Command="{Binding SocialButtonTappedCommand}"
+                            CommandParameter="3" />
+
+                </StackLayout>
+                <Label x:Name="AppSubTitleLabel"
+                        Style="{StaticResource MenuFooterStyle}"
+                        Text="{local:Translate Slogan}" />
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</baseView:BaseContentPage>

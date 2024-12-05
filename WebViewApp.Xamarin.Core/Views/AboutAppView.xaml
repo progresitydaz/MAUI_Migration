@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="WebViewApp.Xamarin.Core.Views.AboutAppView"
+        xmlns:viewModelBase="clr-namespace:WebViewApp.Xamarin.Core.ViewModels.Base;assembly=WebViewApp.Xamarin.Core"
+        xmlns:local="clr-namespace:WebViewApp.Xamarin.Core.Extensions;assembly=WebViewApp.Xamarin.Core"
+        xmlns:controls="clr-namespace:WebViewApp.Xamarin.Core.Controls;assembly=WebViewApp.Xamarin.Core"
+        xmlns:templates="clr-namespace:WebViewApp.Xamarin.Core.Views;assembly=WebViewApp.Xamarin.Core"
+        xmlns:behaviors="clr-namespace:WebViewApp.Xamarin.Core.Behaviors;assembly=WebViewApp.Xamarin.Core"
+        xmlns:views="clr-namespace:WebViewApp.Xamarin.Core.Views;assembly=WebViewApp.Xamarin.Core"
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+        xmlns:baseView="clr-namespace:WebViewApp.Xamarin.Core.Views.Base;assembly=WebViewApp.Xamarin.Core"
+        viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+        ios:Page.UseSafeArea="true" NavigationPage.HasNavigationBar="false"
+        BackgroundColor="{StaticResource AppTitleBarColor}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0"
+                Default="0, 0, 0, 0" />
+    </ContentPage.Padding>
+    <Grid x:Name="MainGrid" AutomationId="Main_Grid" RowSpacing="0"
+            HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+            BackgroundColor="{StaticResource AppBackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <templates:HeaderView Grid.Row="0"
+                TitleText="{local:Translate About}" BindingContext="{Binding}">
+        </templates:HeaderView>
+        <templates:NotificationPopupView Grid.Row="0"
+                IsVisible="{Binding IsNotificationAvailable}"
+                Notification="{Binding Notification}" BindingContext="{Binding}">
+        </templates:NotificationPopupView>
+        <Grid Grid.Row="1" x:Name="ContentWrapper">
+            <Grid.Margin>
+                <OnPlatform x:TypeArguments="Thickness" iOS="20" Android="20" />
+            </Grid.Margin>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Vertical" Grid.Row="0"
+                    VerticalOptions="CenterAndExpand">
+                <Image   Source="splash.png" HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                <Label Style="{StaticResource PageTextStyle}"
+                        Text="{local:Translate AppName}"
+                        HorizontalOptions="CenterAndExpand" />
+                <StackLayout Orientation="Horizontal"
+                        HorizontalOptions="CenterAndExpand">
+                    <Label Style="{StaticResource PageTextStyle}"
+                            Text="{local:Translate Version}" />
+                    <Label Style="{StaticResource PageTextStyle}"
+                            Text="{Binding AppVersionNumber}" />
+                </StackLayout>
+                <Label Style="{StaticResource PageTextStyle}"
+                        Text="{local:Translate Vendor}"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap" />
+                <StackLayout Orientation="Vertical" VerticalOptions="End">
+                    <Label Style="{StaticResource PageTextStyle}"
+                            Text="{local:Translate SupportLine1}"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            LineBreakMode="WordWrap" />
+                    <Label Style="{StaticResource PageTextStyle}"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            LineBreakMode="WordWrap">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span  Text="{local:Translate SupportLine2}" />
+                                <Span Text=" https://wallfahrten.ch/index.php/ueber-mich"
+                                        TextColor="{StaticResource HyperlinkColor}"
+                                        TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SupportUrlTapCommand}"
+                                                CommandParameter="https://wallfahrten.ch/index.php/ueber-mich/" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span  Text="{local:Translate SupportLine3}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        <templates:ActivityIndicatorView Grid.Row="1"
+                IsVisible="{Binding IsBusy}">
+        </templates:ActivityIndicatorView>
+    </Grid>
+</baseView:BaseContentPage>

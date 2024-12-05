@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+    <PackageReference Include="Xamarin.Forms.Mocks" Version="4.6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebViewApp.Xamarin.Core\WebViewApp.Xamarin.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ViewModels\LoginViewModelTests.config" />
+    <None Remove="Services\UserServiceTest.cs.orig" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="UnitTest1.cs" />
+    <Compile Remove="Services\UserServiceTest_BACKUP_6055.cs" />
+  </ItemGroup>
+</Project>

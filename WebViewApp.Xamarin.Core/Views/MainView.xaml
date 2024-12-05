@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:views="clr-namespace:WebViewApp.Xamarin.Core.Views;assembly=WebViewApp.Xamarin.Core"
+     x:Class="WebViewApp.Xamarin.Core.Views.MainView"
+     xmlns:viewModelBase="clr-namespace:WebViewApp.Xamarin.Core.ViewModels.Base;assembly=WebViewApp.Xamarin.Core"
+     xmlns:local="clr-namespace:WebViewApp.Xamarin.Core.Extensions;assembly=WebViewApp.Xamarin.Core"
+     xmlns:controls="clr-namespace:WebViewApp.Xamarin.Core.Controls;assembly=WebViewApp.Xamarin.Core"
+     xmlns:templates="clr-namespace:WebViewApp.Xamarin.Core.Views;assembly=WebViewApp.Xamarin.Core"
+     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+     xmlns:effects="clr-namespace:WebViewApp.Xamarin.Core.Effects;assembly=WebViewApp.Xamarin.Core"
+     viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+     ios:Page.UseSafeArea="true" NavigationPage.HasNavigationBar="false"
+     BackgroundColor="{StaticResource AppBackgroundColor}">
+    <FlyoutPage.Flyout>
+        <views:MenuView />
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <views:InnerWebView />
+    </FlyoutPage.Detail>
+</FlyoutPage>

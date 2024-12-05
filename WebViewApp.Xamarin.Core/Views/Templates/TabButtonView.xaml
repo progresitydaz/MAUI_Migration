@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="WebViewApp.Xamarin.Core.Views.TabButtonView" Padding="1,1"
+        xmlns:controls="clr-namespace:WebViewApp.Xamarin.Core.Controls;assembly=WebViewApp.Xamarin.Core">
+    <controls:ExtendedFrame x:Name="TabFrame"
+            Style="{StaticResource TabButtonFrameStyle}">
+        <Label x:Name="CaptionLabel" VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand" LineBreakMode="WordWrap"
+                Text="{Binding Header}" VerticalTextAlignment="Center" />
+    </controls:ExtendedFrame>
+</ContentView>

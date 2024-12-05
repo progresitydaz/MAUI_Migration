@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<baseView:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="WebViewApp.Xamarin.Core.Views.InnerWebView"
+        xmlns:viewModelBase="clr-namespace:WebViewApp.Xamarin.Core.ViewModels.Base;assembly=WebViewApp.Xamarin.Core"
+        xmlns:local="clr-namespace:WebViewApp.Xamarin.Core.Extensions;assembly=WebViewApp.Xamarin.Core"
+        xmlns:controls="clr-namespace:WebViewApp.Xamarin.Core.Controls;assembly=WebViewApp.Xamarin.Core"
+        xmlns:templates="clr-namespace:WebViewApp.Xamarin.Core.Views;assembly=WebViewApp.Xamarin.Core"
+        xmlns:behaviors="clr-namespace:WebViewApp.Xamarin.Core.Behaviors;assembly=WebViewApp.Xamarin.Core"
+        xmlns:views="clr-namespace:WebViewApp.Xamarin.Core.Views;assembly=WebViewApp.Xamarin.Core"
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+        xmlns:baseView="clr-namespace:WebViewApp.Xamarin.Core.Views.Base;assembly=WebViewApp.Xamarin.Core"
+        viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+        ios:Page.UseSafeArea="False" NavigationPage.HasNavigationBar="false"
+        BackgroundColor="{StaticResource AppBackgroundColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0"
+                Default="0, 0, 0, 0" />
+    </ContentPage.Padding>
+    <Grid x:Name="MainGrid" AutomationId="Main_Grid" RowSpacing="0"
+            HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+            BackgroundColor="{StaticResource AppBackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <templates:HeaderView Grid.Row="0"
+                TitleText="{Binding PageTitle}" BindingContext="{Binding}">
+        </templates:HeaderView>
+        <templates:NotificationPopupView Grid.Row="0"
+                IsVisible="{Binding IsNotificationAvailable}"
+                Notification="{Binding Notification}" BindingContext="{Binding}">
+        </templates:NotificationPopupView>
+        <WebView Grid.Row="1" x:Name="WebViewInner"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" Source="{Binding Url}"
+                HeightRequest="1000" WidthRequest="1000"
+                Navigating="Webview_Navigating" Navigated="Webview_Navigated">
+        </WebView>
+        <templates:ActivityIndicatorView BackgroundColor="Transparent"
+                Grid.Row="1" IsVisible="{Binding IsBusy}"
+                IsBusy="{Binding IsBusy}">
+        </templates:ActivityIndicatorView>
+    </Grid>
+</baseView:BaseContentPage>

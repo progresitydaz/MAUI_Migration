@@ -1,0 +1,118 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="7.0.0" />
+    <PackageReference Include="IdentityModel" Version="6.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="Polly" Version="7.2.3" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.2.0.564" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2545" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
+    <PackageReference Include="Xam.Plugins.Messaging" Version="5.2.0" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.1" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.1" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.1.0" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\Templates\ProductTemplate.xaml" />
+    <EmbeddedResource Remove="Views\BasketView.xaml" />
+    <EmbeddedResource Remove="Views\CatalogView.xaml" />
+    <EmbeddedResource Remove="Views\CustomNavigationView.xaml" />
+    <EmbeddedResource Remove="Views\ProfileView.xaml" />
+    <EmbeddedResource Remove="Controls\AddBasketButton.xaml" />
+    <EmbeddedResource Remove="Views\Base\BaseContentPage.xaml" />
+    <EmbeddedResource Remove="Localization\_AppResources.resx" />
+    <EmbeddedResource Remove="Localization\AppResources_nl.resx" />
+    <EmbeddedResource Remove="Views\DynamicDialogView.xaml" />
+    <EmbeddedResource Remove="Views\HomeView.xaml" />
+    <EmbeddedResource Remove="Views\AboutAppView.xaml" />
+    <EmbeddedResource Remove="Views\AboutAppView.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Templates\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Dependency\" />
+    <Folder Include="Services\Mocks\" />
+    <Folder Include="Tests\" />
+    <Folder Include="Repositories\Base\" />
+    <Folder Include="Models\App\" />
+    <Folder Include="Models\App\Chat\" />
+    <Folder Include="Views\Templates\Cells\" />
+    <Folder Include="Models\UI\" />
+    <Folder Include="Models\Content\" />
+    <Folder Include="Models\Content\Shop\" />
+    <Folder Include="Models\Content\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\BasketView.xaml.cs" />
+    <Compile Remove="Views\CatalogView.xaml.cs" />
+    <Compile Remove="Views\ProfileView.xaml.cs" />
+    <Compile Remove="Views\Base\BaseContentPage.xaml.cs" />
+    <Compile Remove="ViewModels\HeaderViewModel.cs" />
+    <Compile Remove="Models\Catelog\CatalogItem.cs" />
+    <Compile Remove="Models\AuthenticationTokenResponse.cs" />
+    <Compile Remove="Views\Templates\CheckboxTypeTemplate.xaml.cs" />
+    <Compile Remove="Views\Templates\DynamicListViewTemplateSelector.cs" />
+    <Compile Remove="Views\OpenStationView.xaml.cs" />
+    <Compile Remove="Localization\_AppResources.Designer.cs" />
+    <Compile Remove="Localization\AppResources.nl.Designer.cs" />
+    <Compile Remove="Localization\AppResources.Designer %28copy%29.cs" />
+    <Compile Remove="Models\SaveScreenResponse.cs" />
+    <Compile Remove="Views\DynamicTemplates\DynamicPage1.cs" />
+    <Compile Remove="Views\Templates\ActivitySpinner.xaml.cs" />
+    <Compile Remove="Mocks\EmptyClass.cs" />
+     
+    <Compile Remove="Views\AdoptACauseView %28copy%29.xaml.cs" />
+    <Compile Remove="Views\ThingsToDoView %28copy%29.xaml.cs" />
+    <Compile Remove="Views\HomeView.xaml.cs" />
+    <Compile Remove="ViewModels\HomeViewModel.cs" />
+    <Compile Remove="Views\AboutAppView.xaml.cs" />
+    <Compile Remove="ViewModels\AboutViewModel.cs" />
+    <Compile Remove="Views\AboutAppView.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Localization\AppResources_nl.Designer.cs">
+      <DependentUpon>AppResources_nl.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localization\AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Templates\ActionSheetPopupView.xaml.cs">
+      <DependentUpon>..\ActionSheetPopupView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="Localization\AppResources %28another copy%29.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="Localization\AppResources %28copy%29.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.nl.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\DynamicTemplates\.DS_Store" />
+  </ItemGroup>
+</Project>

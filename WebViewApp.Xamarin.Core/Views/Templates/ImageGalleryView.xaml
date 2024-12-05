@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="WebViewApp.Xamarin.Core.Views.ImageGalleryView"
+        xmlns:views="clr-namespace:WebViewApp.Xamarin.Core.Views;assembly=WebViewApp.Xamarin.Core"
+        xmlns:viewModelBase="clr-namespace:WebViewApp.Xamarin.Core.ViewModels.Base;assembly=WebViewApp.Xamarin.Core"
+        xmlns:local="clr-namespace:WebViewApp.Xamarin.Core.Extensions;assembly=WebViewApp.Xamarin.Core"
+        xmlns:controls="clr-namespace:WebViewApp.Xamarin.Core.Controls;assembly=WebViewApp.Xamarin.Core"
+        xmlns:baseView="clr-namespace:WebViewApp.Xamarin.Core.Views.Base;assembly=WebViewApp.Xamarin.Core"
+        xmlns:templates="clr-namespace:WebViewApp.Xamarin.Core.Views;assembly=WebViewApp.Xamarin.Core"
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+        xmlns:effects="clr-namespace:WebViewApp.Xamarin.Core.Effects;assembly=WebViewApp.Xamarin.Core"
+        HorizontalOptions="FillAndExpand" BackgroundColor="#f5f5f5"
+        VerticalOptions="FillAndExpand">
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image  x:Name="ImageView" Grid.Row="0" VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"
+                Aspect="AspectFill">
+            <Image.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped" />
+                <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped" />
+                <SwipeGestureRecognizer Direction="Down" Swiped="OnSwiped" />
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Image.GestureRecognizers>
+        </Image>
+        <StackLayout  Grid.Row="0" VerticalOptions="End"
+                HorizontalOptions="FillAndExpand" Margin="10,10"
+                BackgroundColor="Transparent" Orientation="Horizontal">
+            <StackLayout x:Name="DotContainer" Orientation="Horizontal"
+                    HorizontalOptions="CenterAndExpand" VerticalOptions="Center"
+                    BackgroundColor="Transparent">
+            </StackLayout>
+            <ImageButton  x:Name="DeleteButton" Source="Delete_white.png"
+                    VerticalOptions="Center" BackgroundColor="Transparent"
+                    HorizontalOptions="End" Clicked="Delete_ButtonClcked"
+                    HeightRequest="24" WidthRequest="24">
+            </ImageButton>
+            <ImageButton  x:Name="CloseButton" Source="Arrow_back.png"
+                    VerticalOptions="Center" BackgroundColor="Transparent"
+                    HorizontalOptions="End" Clicked="Close_ButtonClcked"
+                    HeightRequest="24" WidthRequest="24">
+            </ImageButton>
+        </StackLayout>
+    </Grid>
+</ContentView>

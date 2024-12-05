@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="WebViewApp.Xamarin.Core.Views.GridLayoutView"
+        HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+        BackgroundColor="{StaticResource EntryBackgroundColor}">
+    <ScrollView HorizontalScrollBarVisibility="Never"
+            VerticalScrollBarVisibility="Never" x:Name="ScrollView"
+            HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+            Orientation="Horizontal">
+        <StackLayout x:Name="ItemContainer" Margin="0,0,0,0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" Orientation="Horizontal" />
+    </ScrollView>
+</ContentView>

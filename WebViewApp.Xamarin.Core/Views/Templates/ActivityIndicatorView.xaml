@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="WebViewApp.Xamarin.Core.Views.ActivityIndicatorView"
+        xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+        xmlns:local="clr-namespace:WebViewApp.Xamarin.Core.Extensions;assembly=WebViewApp.Xamarin.Core"
+        VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+        BackgroundColor="#CC000000">
+    <StackLayout HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand">
+        <lottie:AnimationView x:Name="BusyIndicator" WidthRequest="160"
+                HeightRequest="160" Margin="5,0" VerticalOptions="Center"
+                HorizontalOptions="Center" Animation="loading_animation.json"
+                AnimationSource="AssetOrBundle" AutoPlay="True"
+                RepeatMode="Infinite"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="{local:Translate Loading}"
+                AutomationProperties.Name="{local:Translate ProgressIndicator}"/>
+    </StackLayout>
+</ContentView>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<templates:ExtendedViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                            x:Class="WebViewApp.Xamarin.Core.Views.ActionListItemCell"
+                            xmlns:templates="clr-namespace:WebViewApp.Xamarin.Core.Views;assembly=WebViewApp.Xamarin.Core">
+    <StackLayout Orientation="Vertical"
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="FillAndExpand"
+                 BackgroundColor="Transparent"
+                 HeightRequest="{StaticResource ActionListItemHeight}">
+        <Grid BackgroundColor="Transparent"
+              VerticalOptions="CenterAndExpand"
+              HorizontalOptions="FillAndExpand"
+              Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Source="{Binding IconSource}"
+                   VerticalOptions="CenterAndExpand"
+                   Grid.Column="0">
+                <Image.Margin>
+                    <OnPlatform x:TypeArguments="Thickness"
+                                iOS="5, 0, 5, 0"
+                                Android="5, 0, 5, 0" />
+                </Image.Margin>
+            </Image>
+            <Label Grid.Column="1"
+                   Text="{Binding Header}"
+                   VerticalOptions="FillAndExpand"
+                   Style="{StaticResource SettingsListEntryHeaderStyle}" />
+        </Grid>
+    </StackLayout>
+</templates:ExtendedViewCell>
