@@ -37,6 +37,10 @@
 		<AndroidLinkTool>r8</AndroidLinkTool>
 		<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
 		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningKeyStore>/Users/dasunnayanajith/Documents/Docs/MAUI_Migration_Test/MAUI_Migration/Publish/maui_test.keystore</AndroidSigningKeyStore>
+		<AndroidSigningStorePass>abc@123</AndroidSigningStorePass>
+		<AndroidSigningKeyAlias>maui_test</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>abc@123</AndroidSigningKeyPass>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
 		<DebugSymbols>true</DebugSymbols>
